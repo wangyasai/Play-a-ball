@@ -173,6 +173,9 @@ var GuiConfig = function() {
   });
 
 
+  StrokeControl = folder1.add(options, 'StrokeWeight',1,5);
+  StrokeControl.onChange(draw);
+  StrokeControl.listen();
 
   var UploadImg = folder1.add(options, 'Upload Image');
 
