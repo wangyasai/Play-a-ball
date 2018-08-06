@@ -172,12 +172,11 @@ var GuiConfig = function() {
     }
   });
 
+  var UploadImg = folder1.add(options, 'Upload Image');
 
   StrokeControl = folder1.add(options, 'StrokeWeight',1,5);
   StrokeControl.onChange(draw);
   StrokeControl.listen();
-
-  var UploadImg = folder1.add(options, 'Upload Image');
 
   SmoothControl = folder1.add(options, 'Smooth',3,60);
   SmoothControl.onChange(draw);
