@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Play a Ball</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link href="" rel="stylesheet">
+
+
+  <link rel="icon" href="image/1.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="image/1.ico" type="image/x-icon">
+
+  <link rel="stylesheet" type="text/css" href="fonts.css">
+
+  <script type="text/javascript" src="js/dat.gui.min.js"></script>
+  <script type="text/javascript" src="js/p5.min.js"></script>
+  <script type="text/javascript" src="js/p5.dom.min.js"></script>
+
+  <input id="img-path" type="file" />
+
+  <style type="text/css">
+  *{
+    margin:0;
+    padding:0;
+  }
+
+  #credits {
+    font-size: 12px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0.8;
+    color: #939393;
+    max-width: 70%;
+    text-align: right;
+  }
+  #img-path {
+    display: none;
+  }
+
+</style>
+</head>
+<body>
+
+
+ <div id="credits"> 
+
+  <div class ="iconlink"> 
+    <div class = "socaial">
+      <span><a class="icon-weibo" href="https://weibo.com/psaiaevegas/profile?rightmod=1&wvr=6&mod=personnumber"  target="_blank"  data-icon="&#xe906;" ></a></span>
+      <span><a class="icon-zhihu" href="https://www.zhihu.com/people/wang-ya-sai/activities"  target="_blank"  data-icon="&#xe907;"></a></span>
+      <span><a class="icon-instagram" href="http://instagram.com/yasaisai"  target="_blank"  data-icon="&#xe903;"></a></span>
+      <span><a class="icon-twitter" href="https://twitter.com/yasai_wang"  target="_blank"  data-icon="&#xe905;"></a></span>
+    </div>
+    <div class = "socaial" style="color:#FFFFFF;font-size: 10pt; margin-right:10px;margin-top: -180px">Created by @yasai </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var type;
+  var options ={  
+    Background : '#D1FDF5',
+    Color1 : '#0049FE',
+    Color2 : '#FFFFFF',
+    Counts: 20,
+    Smooth : 60,
+    Shape : 'Sphere',
+    Pattern : 'Pattern4',
+    StrokeWeight : 2,
+    Image_DataURL :'',
+    'Upload Image': function(){
+        // you need to create an input element in HTML, explained later
+
+        var input = document.getElementById('img-path');
+        input.addEventListener('change', function() {
+          var file = input.files[0];
+          r = new FileReader();
+          r.onload = function (){
+           gui['Image_DataURL'] = r.result;
+           p5LoadImage(r.result);
+           type='image';
+           draw();
+         }
+         r.readAsDataURL(file);
+
+         for (var i in gui.__controllers) {
+          gui.__controllers[i].updateDisplay();
+        }
+      });
+        input.click();
+      },
+
+      Radius : 300,
+      Radius2 : 90,
+      Speed : 0.1,
+      Random: function () { 
+        background(options.Background); 
+        options.Background  = random(['#D1FDF5', '#FED3D5','#F8E4DA']);
+        options.Color1 = random(['#0049FE', '#F96B8A','#DF3622','#ff03b5','#FFBC48','#52BC6A']);
+        options.Color2 = random(['#ffffff','#262626']);     
+        options.Counts = random(10,30); 
+        options.Smooth = random(3,60); 
+        options.Mode = random(['Sphere','Torus','Cylinder','Box'] ); 
+        options.Pattern = random(['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','None']);
+        options.StrokeWeight = random(2,4);
+      },
+
+      SavePNG : false,
+    }
+
+
+//upload icon
+var GuiConfig = function() {
+    this['Image Path'] = 'graphic.png';  // default image path
+    this['Upload Image'] = function() {
+    };
+  };
+
+
+  var text, gui, config,bgcolorControl,ShapeControl,LineControl,CountsCont,SmoothControl,RadiusControl,Radius2Control,RandomControl,imageControl,rolcolor1Control,color2Control, SpeedControl, pngControl,SaveControl ,SmoothControl2,StrokeControl;
+
+  window.onload = function() {
+    gui = new dat.GUI();
+
+  //folder1
+  var folder1 = gui.addFolder('Controls');
+
+  bgcolorControl = folder1.addColor(options, 'Background');
+  bgcolorControl.onChange(draw);
+  bgcolorControl.listen();
+
+  color1Control = folder1.addColor(options, 'Color1');
+  color1Control.onChange(draw);
+  color1Control.listen();
+
+  color2Control = folder1.addColor(options, 'Color2');
+  color2Control.onChange(draw);
+  color2Control.listen();
+
+  ShapeControl = folder1.add(options, 'Shape', ['Sphere','Torus','Cylinder','Box'] );
+  ShapeControl.listen();
+
+  PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','None'] );
+  PatternControl.listen();
+
+
+
+  PatternControl.onChange(function(){
+    if(options.Pattern== 'Pattern1'){
+      type = 'Pattern1';  
+      draw();
+
+    }
+    else if(options.Pattern== 'Pattern2'){
+      type = 'Pattern2';  
+      draw();
+    }
+    else if(options.Pattern== 'Pattern3'){
+      type = 'Pattern3';  
+      draw();
+    }
+    else if(options.Pattern== 'Pattern4'){
+      type = 'Pattern4';  
+      draw();
+    }
+    else if(options.Pattern== 'Pattern5'){
+      type = 'Pattern5';  
+      draw();
+    }
+  });
+
+
+
+  var UploadImg = folder1.add(options, 'Upload Image');
+
+  SmoothControl = folder1.add(options, 'Smooth',3,60);
+  SmoothControl.onChange(draw);
+  SmoothControl.listen();
+
+  CountsControl = folder1.add(options, 'Counts',5,40);
+  CountsControl.onChange(draw);
+  CountsControl.listen();
+
+  RadiusControl = folder1.add(options, 'Radius',100,500);
+  RadiusControl.onChange(draw);
+  RadiusControl.listen();
+
+  Radius2Control = folder1.add(options, 'Radius2',50,300);
+  Radius2Control.onChange(draw);
+  Radius2Control.listen();
+
+  SpeedControl = folder1.add(options, 'Speed',0,1);
+  SpeedControl.onChange(draw);
+  SpeedControl.listen();
+
+  RandomControl = folder1.add(options, 'Random');
+  RandomControl.listen();
+
+
+  pngControl = folder1.add(options, 'SavePNG');
+  pngControl.onChange(draw);
+
+  folder1.open();
+
+};
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+
+</script>
+
+<script type="text/javascript" src="js/sketch.js"></script>
+</body>
+
+</html>
+
