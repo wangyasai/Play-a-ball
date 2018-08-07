@@ -8,7 +8,6 @@
   <meta name="keywords" content="">
   <link href="" rel="stylesheet">
 
-
   <link rel="icon" href="image/1.ico" type="image/x-icon">
   <link rel="shortcut icon" href="image/1.ico" type="image/x-icon">
 
@@ -96,6 +95,9 @@
       Radius : 300,
       Radius2 : 90,
       Speed : 0.1,
+      RotateX : true,
+      RotateY : true,
+      RotateZ : true,
       Random: function () { 
         background(options.Background); 
         options.Background  = random(['#D1FDF5', '#FED3D5','#F8E4DA','#221F4D']);
@@ -104,7 +106,7 @@
         options.Counts = random(10,30); 
         options.Smooth = random(3,60); 
         options.Mode = random(['Sphere','Torus','Cylinder','Box'] ); 
-        options.Pattern = random(['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6']);
+        options.Pattern = random(['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6','Pattern7']);
         options.StrokeWeight = random(2,4);
       },
 
@@ -120,7 +122,7 @@ var GuiConfig = function() {
   };
 
 
-  var text, gui, config,bgcolorControl,ShapeControl,LineControl,CountsCont,SmoothControl,RadiusControl,Radius2Control,RandomControl,imageControl,rolcolor1Control,color2Control, SpeedControl, pngControl,SaveControl ,SmoothControl2,StrokeControl;
+  var text, gui, config,bgcolorControl,ShapeControl,LineControl,CountsCont,SmoothControl,RadiusControl,Radius2Control,RandomControl,imageControl,rolcolor1Control,color2Control, SpeedControl, pngControl,SaveControl ,SmoothControl2,StrokeControl,RotateXControll,RotateYControl,RotateZControl;
 
   window.onload = function() {
     gui = new dat.GUI();
@@ -143,7 +145,7 @@ var GuiConfig = function() {
   ShapeControl = folder1.add(options, 'Shape', ['Sphere','Torus','Cylinder','Box'] );
   ShapeControl.listen();
 
-  PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6'] );
+  PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6','Pattern7'] );
   PatternControl.listen();
 
 
@@ -197,6 +199,18 @@ var GuiConfig = function() {
   SpeedControl = folder1.add(options, 'Speed',0,1);
   SpeedControl.onChange(draw);
   SpeedControl.listen();
+
+  RotateXControl = folder1.add(options, 'RotateX');
+  RotateXControl .onChange(draw);
+
+
+  RotateYControl = folder1.add(options, 'RotateY');
+  RotateYControl .onChange(draw);
+
+
+  RotateZControl = folder1.add(options, 'RotateZ');
+  RotateZControl .onChange(draw);
+
 
   RandomControl = folder1.add(options, 'Random');
   RandomControl.listen();
