@@ -98,13 +98,13 @@
       Speed : 0.1,
       Random: function () { 
         background(options.Background); 
-        options.Background  = random(['#D1FDF5', '#FED3D5','#F8E4DA']);
-        options.Color1 = random(['#0049FE', '#F96B8A','#DF3622','#ff03b5','#FFBC48','#52BC6A']);
-        options.Color2 = random(['#ffffff','#262626']);     
+        options.Background  = random(['#D1FDF5', '#FED3D5','#F8E4DA','#221F4D']);
+        options.Color1 = random(['#0049FE', '#F96B8A','#DF3622','#ff03b5','#FFBC48']);
+        options.Color2 = random(['#ffffff','#262626','#221F4D',]);     
         options.Counts = random(10,30); 
         options.Smooth = random(3,60); 
         options.Mode = random(['Sphere','Torus','Cylinder','Box'] ); 
-        options.Pattern = random(['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','None']);
+        options.Pattern = random(['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6']);
         options.StrokeWeight = random(2,4);
       },
 
@@ -143,7 +143,7 @@ var GuiConfig = function() {
   ShapeControl = folder1.add(options, 'Shape', ['Sphere','Torus','Cylinder','Box'] );
   ShapeControl.listen();
 
-  PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','None'] );
+  PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6'] );
   PatternControl.listen();
 
 
@@ -172,9 +172,11 @@ var GuiConfig = function() {
     }
   });
 
-
-
   var UploadImg = folder1.add(options, 'Upload Image');
+
+  StrokeControl = folder1.add(options, 'StrokeWeight',1,5);
+  StrokeControl.onChange(draw);
+  StrokeControl.listen();
 
   SmoothControl = folder1.add(options, 'Smooth',3,60);
   SmoothControl.onChange(draw);

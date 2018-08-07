@@ -29,8 +29,18 @@ function hexToRgb(hex) {
 
 function draw() {
   rotateY(PI/10);
-  rotateX(millis() * 0.001 * options.Speed);
-  rotateY(millis() * 0.0015 * options.Speed);
+
+  a1 = map(mouseX,-options.Radius,options.Radius,-TWO_PI,TWO_PI);
+  a2 = map(mouseY,-options.Radius,options.Radius,-TWO_PI,TWO_PI);
+
+  if(dist(mouseX,mouseY,width/2,height/2)<options.Radius){
+    rotateX(millis() * 0.001 * options.Speed+a2);
+    rotateY(millis() * 0.0015 * options.Speed+a1);
+  }else{
+    rotateX(millis() * 0.001 * options.Speed);
+    rotateY(millis() * 0.0015 * options.Speed);
+  }
+
 
   if(options.SavePNG == true){
     background(0,0,0,0);
@@ -38,7 +48,7 @@ function draw() {
     background(options.Background);
   }
 
-  if(options.Pattern == 'None' && type != 'image'){
+  if(options.Pattern == 'Pattern6' && type != 'image'){
     stroke(options.Color1);
     strokeWeight(options.StrokeWeight);
     noFill();
@@ -46,7 +56,7 @@ function draw() {
       options.Smooth = 15;
     }
     chooseShape(options.Smooth/5);
-  }else if(options.Pattern != 'None' && type != 'image') {
+  }else if(options.Pattern != 'Pattern6' && type != 'image') {
     fill(options.Color1);
     texture(graphics);
     pattern();
@@ -56,14 +66,6 @@ function draw() {
     pattern();
     chooseShape(options.Smooth);
   }
-
-  a1 = map(mouseX,-options.Radius,options.Radius,-TWO_PI,TWO_PI);
-  a2 = map(mouseX,-options.Radius,options.Radius,-TWO_PI,TWO_PI);
-  if(mouseIsPressed){
-   rotateX(a1);
-   rotateY(a2);
- }
-
 }
 
 
