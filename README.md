@@ -2,7 +2,7 @@
 
 
 生成图片可以任意使用
-![line](https://github.com/wangyasai/DataVizTemp/blob/master/image/movie.gif)
+![line](https://github.com/wangyasai/Play-a-ball/blob/gh-pages/image/1.gif)
 
 
 weibo:[**@亚赛大人**](https://weibo.com/psaiaevegas/home?topnav=1&wvr=6)
