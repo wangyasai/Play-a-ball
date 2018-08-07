@@ -8,15 +8,22 @@
 
 
 
+
+
 ## 其他工具
-Awesome Masoic>> https://wangyasai.github.io/Awesome-Mosaic/
-![Awesome Masoic]()
+Awesome Masoic >> 🔗https://wangyasai.github.io/Awesome-Mosaic/
+![](https://github.com/wangyasai/Play-a-ball/blob/gh-pages/image/mosaic.gif)
 
-Perlin Noise>> https://wangyasai.github.io/Perlin-Noise/
+Perlin Noise >> 🔗https://wangyasai.github.io/Perlin-Noise/
+![](https://github.com/wangyasai/Play-a-ball/blob/gh-pages/image/perlinnoise.jpg)
 
-万箭齐发毫发无伤背景生成器>>http://t.cn/Rn7e7Gh 
+万箭齐发毫发无伤背景生成器 >> 🔗http://t.cn/Rn7e7Gh 
+![](https://github.com/wangyasai/Play-a-ball/blob/gh-pages/image/star.gif)
 
-粒子循环运动神器>>http://t.cn/Rjm8fkS  
+粒子循环运动神器 >> 🔗http://t.cn/Rjm8fkS  
+![](https://github.com/wangyasai/Play-a-ball/blob/gh-pages/image/particles.gif)
+
+
 
 
 ## 联系我
