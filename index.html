@@ -61,14 +61,14 @@
 
   var type;
   var options ={  
-    Background : '#D1FDF5',
-    Color1 : '#0049FE',
-    Color2 : '#FFFFFF',
+    Background :'#221f4d',
+    Color1 : '#FFE947',
+    Color2 : '#FF29CC',
     Counts: 20,
     Smooth : 60,
     Shape : 'Sphere',
-    Pattern : 'Pattern4',
-    StrokeWeight : 2,
+    Pattern : 'Pattern1',
+    StrokeWeight : 7,
     Image_DataURL :'',
     'Upload Image': function(){
         // you need to create an input element in HTML, explained later
@@ -92,7 +92,7 @@
         input.click();
       },
 
-      Radius : 300,
+      Radius : 270,
       Radius2 : 90,
       Speed : 0.1,
       RotateX : true,
@@ -100,10 +100,10 @@
       RotateZ : true,
       Random: function () { 
         background(options.Background); 
-        options.Background  = random(['#D1FDF5', '#FED3D5','#F8E4DA','#221F4D']);
-        options.Color1 = random(['#0049FE', '#F96B8A','#DF3622','#ff03b5','#FFBC48']);
-        options.Color2 = random(['#ffffff','#262626','#221F4D',]);     
-        options.Counts = random(10,30); 
+        options.Background  = random(['#FFE300', '#00EBA5','#111111','#f2f2f2']);
+        options.Color1 = random(['#E632A5', '#580AFF','#005CFF']);
+        options.Color2 = options.Background;
+        options.Counts = random(25,40); 
         options.Smooth = random(3,60); 
         options.Mode = random(['Sphere','Torus','Cylinder','Box'] ); 
         options.Pattern = random(['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6','Pattern7']);
@@ -176,7 +176,7 @@ var GuiConfig = function() {
 
   var UploadImg = folder1.add(options, 'Upload Image');
 
-  StrokeControl = folder1.add(options, 'StrokeWeight',1,5);
+  StrokeControl = folder1.add(options, 'StrokeWeight',1,10);
   StrokeControl.onChange(draw);
   StrokeControl.listen();
 

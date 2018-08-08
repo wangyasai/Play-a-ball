@@ -1,4 +1,4 @@
-var lengths = 1000;
+var lengths = 1500;
 let graphics;
 var myCanvas;
 var img;
