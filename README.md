@@ -5,7 +5,7 @@
 ![Play a ball](https://github.com/wangyasai/Play-a-ball/blob/gh-pages/image/3.gif)    
 
 🔗工具链接: https://wangyasai.github.io/Play-a-ball/     
-🤩了解更多:https://weibo.com/1757693565/Gtyq404gr     
+🤩了解更多: https://weibo.com/1757693565/Gtyq404gr     
 📝生成的图片可以任意使用    
 
       
