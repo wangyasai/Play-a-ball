@@ -111,6 +111,9 @@
       },
 
       SavePNG : false,
+      Save : function(){
+        saveFrames("Play-a-ball", "png", 1, 1);
+      },
     }
 
 
@@ -122,7 +125,7 @@ var GuiConfig = function() {
   };
 
 
-  var text, gui, config,bgcolorControl,ShapeControl,LineControl,CountsCont,SmoothControl,RadiusControl,Radius2Control,RandomControl,imageControl,rolcolor1Control,color2Control, SpeedControl, pngControl,SaveControl ,SmoothControl2,StrokeControl,RotateXControll,RotateYControl,RotateZControl;
+  var text, gui, config,bgcolorControl,ShapeControl,LineControl,CountsCont,SmoothControl,RadiusControl,Radius2Control,RandomControl,imageControl,rolcolor1Control,color2Control, SpeedControl, pngControl,SaveControl ,SmoothControl2,StrokeControl,RotateXControll,RotateYControl,RotateZControl,SaveControl;
 
   window.onload = function() {
     gui = new dat.GUI();
@@ -219,6 +222,10 @@ var GuiConfig = function() {
   pngControl = folder1.add(options, 'SavePNG');
   pngControl.onChange(draw);
 
+
+  var SaveControl = folder1.add(options, 'Save');
+  folder1.open();
+  
   folder1.open();
 
 };
