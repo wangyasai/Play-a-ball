@@ -210,10 +210,7 @@ var UploadImg = folder1.add(options, 'Upload Image');
 StrokeControl = folder1.add(options, 'StrokeWeight',1,10);
 StrokeControl.onChange(draw);
 StrokeControl.listen();
-
-SmoothControl = folder1.add(options, 'Smooth',3,60);
-SmoothControl.onChange(draw);
-SmoothControl.listen();
+    
 
 CountsControl = folder1.add(options, 'Counts',5,40);
 CountsControl.onChange(draw);
@@ -227,6 +224,10 @@ Radius2Control = folder1.add(options, 'Radius2',50,300);
 Radius2Control.onChange(draw);
 Radius2Control.listen();
 
+SmoothControl = folder1.add(options, 'Smooth',3,60);
+SmoothControl.onChange(draw);
+SmoothControl.listen();
+    
 SpeedControl = folder1.add(options, 'Speed',0,1);
 SpeedControl.onChange(draw);
 SpeedControl.listen();
