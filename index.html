@@ -128,9 +128,14 @@
       RotateZ : true,
       Random: function () { 
         background(options.Background); 
-        options.Background  = random(['#FFE300', '#00EBA5','#111111','#f2f2f2']);
-        options.Color1 = random(['#E632A5', '#580AFF','#005CFF']);
-        options.Color2 = options.Background;
+        var Background  = random(['#FFE300', '#00EBA5','#111111','#f2f2f2']);
+        bgcolorControl.setValue(Background);
+
+        var Color1 = random(['#E632A5', '#580AFF','#005CFF']);
+        color1Control.setValue(Color1);
+
+        color2Control.setValue(Background);
+
         options.Counts = random(25,40); 
         options.Smooth = random(3,60); 
         options.Mode = random(['Sphere','Torus','Cylinder','Box'] ); 
@@ -163,97 +168,94 @@ var GuiConfig = function() {
 
   bgcolorControl = folder1.addColor(options, 'Background');
   bgcolorControl.onChange(draw);
-  bgcolorControl.listen();
 
   color1Control = folder1.addColor(options, 'Color1');
   color1Control.onChange(draw);
-//   color1Control.listen();
 
-color2Control = folder1.addColor(options, 'Color2');
-color2Control.onChange(draw);
-//   color2Control.listen();
+  color2Control = folder1.addColor(options, 'Color2');
+  color2Control.onChange(draw);
 
-ShapeControl = folder1.add(options, 'Shape', ['Sphere','Torus','Cylinder','Box'] );
-ShapeControl.listen();
+  ShapeControl = folder1.add(options, 'Shape', ['Sphere','Torus','Cylinder','Box'] );
+  ShapeControl.listen();
 
-PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6','Pattern7'] );
-PatternControl.listen();
+  PatternControl = folder1.add(options, 'Pattern', ['Pattern1','Pattern2','Pattern3','Pattern4','Pattern5','Pattern6','Pattern7'] );
+  PatternControl.listen();
 
 
 
-PatternControl.onChange(function(){
-  if(options.Pattern== 'Pattern1'){
-    type = 'Pattern1';  
-    draw();
+  PatternControl.onChange(function(){
+    if(options.Pattern== 'Pattern1'){
+      type = 'Pattern1';  
+      draw();
 
-  }
-  else if(options.Pattern== 'Pattern2'){
-    type = 'Pattern2';  
-    draw();
-  }
-  else if(options.Pattern== 'Pattern3'){
-    type = 'Pattern3';  
-    draw();
-  }
-  else if(options.Pattern== 'Pattern4'){
-    type = 'Pattern4';  
-    draw();
-  }
-  else if(options.Pattern== 'Pattern5'){
-    type = 'Pattern5';  
-    draw();
-  }
-});
+    }
+    else if(options.Pattern== 'Pattern2'){
+      type = 'Pattern2';  
+      draw();
+    }
+    else if(options.Pattern== 'Pattern3'){
+      type = 'Pattern3';  
+      draw();
+    }
+    else if(options.Pattern== 'Pattern4'){
+      type = 'Pattern4';  
+      draw();
+    }
+    else if(options.Pattern== 'Pattern5'){
+      type = 'Pattern5';  
+      draw();
+    }
+  });
 
-var UploadImg = folder1.add(options, 'Upload Image');
+  var UploadImg = folder1.add(options, 'Upload Image');
 
-StrokeControl = folder1.add(options, 'StrokeWeight',1,10);
-StrokeControl.onChange(draw);
-StrokeControl.listen();
-    
-
-CountsControl = folder1.add(options, 'Counts',5,40);
-CountsControl.onChange(draw);
-CountsControl.listen();
-
-RadiusControl = folder1.add(options, 'Radius',100,500);
-RadiusControl.onChange(draw);
-RadiusControl.listen();
-
-Radius2Control = folder1.add(options, 'Radius2',50,300);
-Radius2Control.onChange(draw);
-Radius2Control.listen();
-
-SmoothControl = folder1.add(options, 'Smooth',3,60);
-SmoothControl.onChange(draw);
-SmoothControl.listen();
-    
-SpeedControl = folder1.add(options, 'Speed',0,1);
-SpeedControl.onChange(draw);
-SpeedControl.listen();
-
-RotateXControl = folder1.add(options, 'RotateX');
-RotateXControl .onChange(draw);
+  StrokeControl = folder1.add(options, 'StrokeWeight',1,10);
+  StrokeControl.onChange(draw);
+  StrokeControl.listen();
 
 
-RotateYControl = folder1.add(options, 'RotateY');
-RotateYControl .onChange(draw);
+  CountsControl = folder1.add(options, 'Counts',5,40);
+  CountsControl.onChange(draw);
+  CountsControl.listen();
+
+  RadiusControl = folder1.add(options, 'Radius',100,500);
+  RadiusControl.onChange(draw);
+  RadiusControl.listen();
+
+  Radius2Control = folder1.add(options, 'Radius2',50,300);
+  Radius2Control.onChange(draw);
+  Radius2Control.listen();
+
+  SmoothControl = folder1.add(options, 'Smooth',3,60);
+  SmoothControl.onChange(draw);
+  SmoothControl.listen();
+
+  SpeedControl = folder1.add(options, 'Speed',0,1);
+  SpeedControl.onChange(draw);
+  SpeedControl.listen();
+
+  RotateXControl = folder1.add(options, 'RotateX');
+  RotateXControl .onChange(draw);
 
 
-RotateZControl = folder1.add(options, 'RotateZ');
-RotateZControl .onChange(draw);
+  RotateYControl = folder1.add(options, 'RotateY');
+  RotateYControl .onChange(draw);
 
 
-RandomControl = folder1.add(options, 'Random');
-RandomControl.listen();
+  RotateZControl = folder1.add(options, 'RotateZ');
+  RotateZControl .onChange(draw);
 
 
-pngControl = folder1.add(options, 'SavePNG');
-pngControl.onChange(draw);
+  RandomControl = folder1.add(options, 'Random');
 
 
-var SaveControl = folder1.add(options, 'Save');
-folder1.open();
+
+  pngControl = folder1.add(options, 'SavePNG');
+  pngControl.onChange(draw);
+
+
+  var SaveControl = folder1.add(options, 'Save');
+  folder1.open();
 
 
 };
